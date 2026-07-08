@@ -1,0 +1,64 @@
+name: Feature / Task
+description: 一個要開發的功能或任務
+title: "[Feat]: "
+labels: ["type: feature", "status: triage"]
+body:
+  - type: markdown
+    attributes:
+      value: | 
+        規劃一個功能或開發任務。
+        重點是要把「要做什麼、為什麼、怎樣算完成」寫清楚。
+        清楚的驗收條件讓「完成」有客觀的標標準，而不是做完再說。
+
+  - type: textarea
+    id: summary
+    attributes:
+      label: 要做什麼
+      description: 描述這個功能 / 任務
+      placeholder: 例如：實作「分批存入 - 章節」的存入流程與寫入 deposit
+    validations:
+      required: true
+  
+  - type: textarea
+    id: why
+    attributes:
+      label: 為什麼 / 解決什麼問題
+      description: 這件事的動機或它服務的使用者價值
+      placeholder: 例如：讓使用者不必讀完整本就能紀錄，降低存入門檻
+    validations:
+      required: true
+  
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: 驗收條件
+      description: 滿足哪些條件才算完成？盡量寫成可勾選、可驗證的項目
+      placeholder: |
+        - [ ] 完成 API 並提供Swagger
+        - [ ] 執行 deposit 流程會產生 deposit.json 且不噴 error
+        - [ ] Deposit 檔案內的欄位都符合 deposit.schema.json 定義
+    validations:
+      required: true
+
+  - type: dropdown
+    id: milestone
+    attributes:
+      label: 所屬階段
+      options:
+        - "階段一：地基（Auth / books / deposits / 帳列 / 統計）"
+        - "階段二：筆記 + 公開私密"
+        - "階段三：累積回饋（等級 / 勳章 / 書幣 / 年度回顧）"
+        - "階段四：社群 + AI 摘要"
+        - "階段五：RWD 打磨 + PWA 強化"
+        - "跨階段 / 基礎建設"
+    validations:
+      required: true 
+  - textarea
+    id: notes
+    attributes:
+      label: 技術備注 / 相關連結
+      description: 實作考量、相依的 issue、參考的 spec 段落等（選填）
+      placeholder: 例如：需先訂 deposit 的 Zod schem；參考 spec §3.2、§4
+  validations:
+    required: false
+      

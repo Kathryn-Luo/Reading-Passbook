@@ -1,0 +1,42 @@
+name: 🔧 Chore / Tech Debt
+description: 重構、升級、設定、文件、開發環境等非功能性工作
+title: "[Chore]: "
+labels: ["type: chore", "status: triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        用於不直接產生使用者可見功能、但維持專案健康的工作：
+        重構、套件升級、CI 調整、文件、開發環境等
+
+  - type: textarea
+    id: task
+    attributes:
+      label: 要處理什麼
+      description: 描述這項維護工作。
+      placeholder: 例如：升級 Nuxt UI 到最新 patch；把衍生值計算抽成 Postgres view。
+    validations:
+      required: true
+    
+  - type: textarea
+    id: rationable
+    attributes:
+      label: 為什麼現在做
+      description: 動機、風險、或不做的後果
+      placeholder: 例如：目前衍生值散在前端 composable，趁早收斂到 DB 層，避免日後大重工。
+    validations:
+      required: true
+
+  - type: dropdown
+    id: kind
+    attributes:
+      label: 類型
+      options:
+        - 重構 / 技術債
+        - 相依套件升級
+        - CI / CD / 建置
+        - 文件
+        - 開發環境 / 工具鏈
+        - 其他
+    validations:
+      required: false
