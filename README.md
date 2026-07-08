@@ -20,3 +20,14 @@
 
 ## 為什麼重寫
 簡述於此，完整權衡見 [ADR-000](docs/adr/000-rewrite-from-scratch.md)。
+
+
+## 本機開發
+**需求**：Node.js 22+、pnpm、一個 Supabase 專案
+ 
+```bash
+pnpm install
+cp .env.example .env        # 填入 Supabase URL / anon key 等
+pnpm supabase db push       # 套用 migrations（schema）
+pnpm dev
+```
