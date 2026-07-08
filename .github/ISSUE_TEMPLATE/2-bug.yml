@@ -1,0 +1,76 @@
+name: Bug 回報
+description: 回報一個錯誤或非預期的行為
+title: "[Bug]: "
+labels: ["type: bug", "status: triage"]
+body: 
+  - type: markdown
+    attributes:
+      value: |
+        感謝回報！請盡量填完以下欄位，資訊愈完整愈容易定位問題
+        送出前也麻煩搜尋一下，確認同樣的問題還沒有人回報過
+
+  - type: textarea
+    id: what-happend
+    attributes:
+      label: 發生了什麼事
+      description: 簡述你遇到的問題
+      placeholder: 例如：在存入頁面選擇「章節」存入後，首頁餘額沒有更新
+    validations: 
+      required: true
+      
+  - type: textarea
+    id: repo
+    attributes: 怎麼讓這個 bug 重現？請一步一步寫。
+    value: |
+      1. 前往⋯⋯
+      2. 點擊⋯⋯
+      3. 觀察到⋯⋯
+    validations:
+      required: true
+  
+  - type: textarea
+    id: expected
+    attributes:
+      label: 預期行為 vs 實際行為
+      description: 你原本預期會發生什麼？實際上發生了什麼？
+      placeholder: |
+        預期：餘額 + 1 ，帳列新增一筆。
+        實際：帳列有新增，但餘額欄沒變。
+    validations:
+      required: true
+
+  - type: dropdown
+    id: area
+    attributes:
+      label: 相關領域
+      description: 這個問題大概屬於哪一塊？（可幫助分類）
+      options:
+        - 前端 / UI
+        - 資料模型 / Supabase
+        - 衍生值計算 (本數/餘額/等級)
+        - RLS / 權限
+        - Nitro server route (books / summary)
+        - PWA / 部署
+        - 其他 / 不確定
+    validations:
+      required: false
+
+  - type: textarea
+    id: environment
+    attributes:
+      label: 環境
+      description: 瀏覽器、裝置、螢幕尺寸等（手機 or 桌機的 bug 常常不一樣）
+      placeholder: |
+        - 裝置：iPhone 16 Pro / Macbook
+        - 瀏覽器：Safari 18 / Chrome 130
+        - 畫面：手機直式 / 桌機
+    validations:
+      required: false
+  
+  - type: textarea
+    id: logs
+    attributes:
+      label: Console / 錯誤訊息
+      description: 若有 console 錯誤或 stack trace，貼在這裡（會自動套用程式碼格式）
+      render: shell
+    validations:

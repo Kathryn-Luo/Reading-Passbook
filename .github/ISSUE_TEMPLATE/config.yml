@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 📄 產品規格與資料模型
+    url: https://github.com/Kathryn-Luo/Reading-Passbook/blob/main/docs/spec.md
+    about: 開 issue 前，可以先看看產品規格與資料模型文件
