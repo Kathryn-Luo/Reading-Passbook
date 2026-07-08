@@ -1,3 +1,5 @@
 <template>
-  <NuxtWelcome />
+  <UApp>
+    <NuxtPage />
+  </UApp>
 </template>
