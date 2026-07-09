@@ -20,11 +20,13 @@ body:
       
   - type: textarea
     id: repo
-    attributes: 怎麼讓這個 bug 重現？請一步一步寫。
-    value: |
-      1. 前往⋯⋯
-      2. 點擊⋯⋯
-      3. 觀察到⋯⋯
+    attributes: 
+      label: 重現步驟
+      description: 怎麼讓這個 bug 重現？請一步一步寫。
+      placeholder: |
+        1. 前往⋯⋯
+        2. 點擊⋯⋯
+        3. 觀察到⋯⋯
     validations:
       required: true
   
@@ -74,3 +76,4 @@ body:
       description: 若有 console 錯誤或 stack trace，貼在這裡（會自動套用程式碼格式）
       render: shell
     validations:
+      required: false
