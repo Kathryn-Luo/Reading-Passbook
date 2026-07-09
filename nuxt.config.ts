@@ -16,8 +16,8 @@ export default defineNuxtConfig({
   supabase: {
     redirectOptions: {
       login: '/login',
-      callback: '/confirm',
-      exclude: ['/*'],  // TODO: 開發期全放行,等登入流程做好再收回來
+      callback: '/confirm',   // OAuth 回跳頁
+      exclude: ['/'],         // 首頁不強制登入，其餘預設保護
     }
-  }
+  },
 })
