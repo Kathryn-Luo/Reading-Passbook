@@ -53,12 +53,12 @@ body:
         - "跨階段 / 基礎建設"
     validations:
       required: true 
-  - textarea
+  - type: textarea
     id: notes
     attributes:
       label: 技術備注 / 相關連結
       description: 實作考量、相依的 issue、參考的 spec 段落等（選填）
       placeholder: 例如：需先訂 deposit 的 Zod schem；參考 spec §3.2、§4
-  validations:
-    required: false
+    validations:
+      required: false
       
