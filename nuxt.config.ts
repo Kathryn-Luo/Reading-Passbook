@@ -6,14 +6,18 @@ export default defineNuxtConfig({
   typescript: {
     typeCheck: true,
   },
-  modules: [
-    '@nuxt/ui',
-    '@nuxt/eslint'
-  ],
+  modules: ['@nuxt/ui', '@nuxt/eslint', '@nuxtjs/supabase'],
   eslint: {
     config: {
       stylistic: true,
       autoInit: false
+    }
+  },
+  supabase: {
+    redirectOptions: {
+      login: '/login',
+      callback: '/confirm',
+      exclude: ['/*'],  // TODO: 開發期全放行,等登入流程做好再收回來
     }
   }
 })
