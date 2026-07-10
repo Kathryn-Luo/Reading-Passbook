@@ -22,6 +22,8 @@ watch(user, () => {
 
 <template>
   <div>
-    <button @click="signInWithGoogle">Google Login</button>
+    <button @click="signInWithGoogle">
+      Google Login
+    </button>
   </div>
 </template>
