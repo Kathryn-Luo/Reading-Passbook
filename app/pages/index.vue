@@ -1,11 +1,9 @@
 <script setup>
-
 const user = useSupabaseUser()
 watch(user, () => {
   console.log(user.value)
   console.log(user.value?.sub)
 }, { immediate: true })
-
 
 const supabase = useSupabaseClient()
 const logout = async () => {
