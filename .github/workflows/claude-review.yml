@@ -1,0 +1,34 @@
+name: Claude PR Review
+on:
+  pull_request:
+    types: [opened, synchronize]
+
+# 同一 PR 有新 push 時，取消還在跑的舊 review
+concurrency:
+  group: claude-review-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+      issues: write
+      actions: read
+      id-token: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: anthropics/claude-code-action@v1
+        with:
+          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          track_progress: true
+          prompt: |
+            請審查這個 PR，一律用繁體中文，直接留 review comment。
+            這是 Nuxt4 + Supabase 專案，作者是前端正在學習後端，請依此輕重審查：
+            1. RLS policy（最優先）：逐條確認資料存取權限、有無越權讀寫。
+            2. 後端（Nitro / Supabase）：輸入驗證、錯誤處理、認證授權、資料一致性。
+            3. 前端（Vue / Nuxt UI）：有更好寫法可建議；XSS、敏感資料外洩等嚴重漏洞一定要提。
+            4. 沒問題的 PR 不用硬找問題，簡短肯定即可。
