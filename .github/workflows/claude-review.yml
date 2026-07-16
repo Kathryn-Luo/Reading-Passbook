@@ -25,6 +25,8 @@ jobs:
         with:
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           track_progress: true
+          claude_args: |
+            --model claude-opus-4-8
           prompt: |
             請審查這個 PR，一律用繁體中文，直接留 review comment。
             這是 Nuxt4 + Supabase 專案，作者是前端正在學習後端，請依此輕重審查：
