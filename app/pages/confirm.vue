@@ -1,10 +1,9 @@
 <script setup lang="ts">
-const user = useSupabaseUser()
+// 登入確認頁不進行語系切換
+defineI18nRoute(false)
 
-watch(user, () => {
-  console.log(user.value)
-  if (user.value) navigateTo('/')
-}, { immediate: true })
+// 登入後導向至原本語言的首頁
+useLoginRedirect()
 </script>
 
 <template>
