@@ -1,2 +1,151 @@
 @import "tailwindcss";
 @import "@nuxt/ui";
+
+/* ══════════════════════════════════════════════
+  第 1 層：色階（餵 Nuxt UI 的 primary/secondary/neutral）
+  ⭐ = 你設計稿的原始值，其餘為補滿 11 階的內插值
+  必須用 @theme static，否則沒被 class 直接用到的階會被搖樹掉，
+  Nuxt UI 的 hover / dark mode 會壞掉
+  ══════════════════════════════════════════════ */
+@theme static {
+  /* ── 深青 → primary ── */
+  --color-brand-50:  #ECF3F2;
+  --color-brand-100: #D2E3E1;
+  --color-brand-200: #BCD6D2; /* ⭐ teal-on-muted */
+  --color-brand-300: #A7C8C3; /* ⭐ teal-on-label */
+  --color-brand-400: #8FB3AE; /* ⭐ teal-on-secondary */
+  --color-brand-500: #1D5B56; /* ⭐ teal-base（按鈕預設色） */
+  --color-brand-600: #184C48;
+  --color-brand-700: #143E3B;
+  --color-brand-800: #10302E;
+  --color-brand-900: #0C2321;
+  --color-brand-950: #061412;
+
+  /* ── 金 → secondary ── */
+  --color-gold-50:  #FBF6E9;
+  --color-gold-100: #F6EBC9;
+  --color-gold-200: #F3E6C4; /* ⭐ gold-badge-bg */
+  --color-gold-300: #E9C675; /* ⭐ gold-on-dark */
+  --color-gold-400: #E7C36B;
+  --color-gold-500: #E0B654; /* ⭐ gold-base */
+  --color-gold-600: #C79A45;
+  --color-gold-700: #A9842F; /* ⭐ gold-text */
+  --color-gold-800: #876826;
+  --color-gold-900: #654E1E;
+  --color-gold-950: #3F3012;
+
+  /* ── 暖中性（紙＋文字＋分隔線）→ neutral ── */
+  --color-sand-50:  #F5F0E5; /* ⭐ paper-card */
+  --color-sand-100: #F1EBDB; /* ⭐ paper-list-bg */
+  --color-sand-200: #E6DFCC; /* ⭐ hairline-row */
+  --color-sand-300: #DDD5C1; /* ⭐ hairline-section */
+  --color-sand-400: #CBC0A6; /* ⭐ hairline-double */
+  --color-sand-500: #A89E83; /* ⭐ ink-muted */
+  --color-sand-600: #9A9079; /* ⭐ ink-faint */
+  --color-sand-700: #7A7364; /* ⭐ ink-secondary */
+  --color-sand-800: #5A554A;
+  --color-sand-900: #3A362F;
+  --color-sand-950: #2B2824; /* ⭐ ink-primary（墨色） */
+}
+
+/* ══════════════════════════════════════════════
+   第 2 層：語意別名（給你手寫 markup 用，指向色階＝單一真相來源）
+   ══════════════════════════════════════════════ */
+@theme static {
+  /* 紙本：三個獨立表面，維持原值不併入色階 */
+  --color-paper-canvas:   #E7E1D3; /* ⭐ 背景·畫布 */
+  --color-paper-card:     #F5F0E5; /* ⭐ 卡片·裝置底 */
+  --color-paper-list-bg:  #F1EBDB; /* ⭐ 分頁·列表底 */
+
+  /* 文字：指向 sand */
+  --color-ink-primary:    var(--color-sand-950);
+  --color-ink-secondary:  var(--color-sand-700);
+  --color-ink-muted:      var(--color-sand-500);
+  --color-ink-faint:      var(--color-sand-600);
+  --color-ink-label:      #8A7F5C; /* ⭐ 色階外的獨立值 */
+
+  /* 青字：指向 brand */
+  --color-teal-base:          var(--color-brand-500);
+  --color-teal-on-label:      var(--color-brand-300);
+  --color-teal-on-secondary:  var(--color-brand-400);
+  --color-teal-on-muted:      var(--color-brand-200);
+
+  /* 金字：指向 gold */
+  --color-gold-base:      var(--color-gold-500);
+  --color-gold-on-dark:   var(--color-gold-300);
+  --color-gold-badge-bg:  var(--color-gold-200);
+  --color-gold-text:      var(--color-gold-700);
+
+  /* 分隔線：多數指向 sand，兩個色階外的維持原值 */
+  --color-hairline-double:   var(--color-sand-400);
+  --color-hairline-section:  var(--color-sand-300);
+  --color-hairline-row:      var(--color-sand-200);
+  --color-hairline-cell:     #ECE5D3; /* ⭐ 色階外 */
+  --color-hairline-border:   #D8D0BD; /* ⭐ 色階外 */
+}
+/* ══════════════════════════════════════════════
+   字體 / 尺度 / 圓角 / 陰影
+   ══════════════════════════════════════════════ */
+@theme static {
+  /* 字型（⚠️ 需另裝 @nuxt/fonts 才會實際下載字型） */
+  --font-serif: 'Noto Serif TC', serif;
+  --font-sans:  'Noto Sans TC', sans-serif;
+
+  /* 文字尺度：範圍已挑成單一值，可再微調 */
+  --text-title: 38px;
+  --text-title--line-height: 1.05;
+  --text-title--font-weight: 900;
+  --text-title--letter-spacing: 0.04em;
+
+  --text-card-title: 17px;
+  --text-card-title--line-height: 1.3;
+  --text-card-title--font-weight: 900;
+
+  --text-body: 15px;
+  --text-body--line-height: 1.7;
+
+  --text-meta: 11px;
+  --text-meta--line-height: 1.4;
+
+  --text-balance: 40px;
+  --text-balance--line-height: 1;
+  --text-balance--font-weight: 900;
+
+  /* 圓角（範圍取單一值） */
+  --radius-device:  44px;
+  --radius-card:    20px;
+  --radius-swatch:  10px;
+  --radius-badge:   8px;
+  --radius-cover:   3px;
+
+  /* 陰影 */
+  --shadow-device:     0 24px 60px -20px rgba(60, 50, 30, 0.35);
+  --shadow-card:       0 16px 40px -20px rgba(60, 50, 30, 0.25);
+  --shadow-teal-card:  0 12px 24px -12px rgba(29, 91, 86, 0.6);
+  --shadow-cover:      0 6px 12px -4px rgba(70, 50, 20, 0.5);
+}
+
+
+/* ══════════════════════════════════════════════
+   複合樣式：非單一 token，做成 utility class
+   ══════════════════════════════════════════════ */
+
+@utility num {
+  /* 存摺數字、日期、次數用等寬數字對齊 */
+  font-variant-numeric: tabular-nums;
+}
+
+@utility eyebrow {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  color: var(--color-ink-label);
+}
+
+@utility label-caps {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+}
