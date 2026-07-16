@@ -1,9 +1,11 @@
-// https://nuxt.com/docs/api/configuration/nuxt-config
+import { defaultLocale, locales, excludePaths } from './config/routing'
+
 export default defineNuxtConfig({
   modules: [
     '@nuxt/ui',
     '@nuxt/eslint',
     '@nuxtjs/supabase',
+    '@nuxtjs/i18n',
   ],
   devtools: { enabled: true },
   css: ['~/assets/css/main.css'],
@@ -17,11 +19,22 @@ export default defineNuxtConfig({
       autoInit: false,
     },
   },
+  i18n: {
+    defaultLocale,
+    locales,
+    strategy: 'prefix_except_default',
+    detectBrowserLanguage: {
+      useCookie: true,
+      cookieKey: 'i18n_redirected',
+      redirectOn: 'root',
+    },
+    skipSettingLocaleOnNavigate: true,
+  },
   supabase: {
     redirectOptions: {
       login: '/login',
       callback: '/confirm', // OAuth 回跳頁
-      exclude: ['/'], // 首頁不強制登入，其餘預設保護
+      exclude: excludePaths, // 首頁不強制登入，其餘預設保護
     },
   },
 })

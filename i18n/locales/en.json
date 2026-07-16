@@ -1,0 +1,9 @@
+{
+  "navbar": {
+    "bookshelf": "Bookshelf",
+    "deposit": "Deposit",
+    "myBooks": "My Books",
+    "stats": "Stats",
+    "profile": "Profile"
+  }
+}

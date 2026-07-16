@@ -1,4 +1,7 @@
 <script lang="ts" setup>
+// 登入頁不進行語系切換
+defineI18nRoute(false)
+
 const supabase = useSupabaseClient()
 
 async function signInWithGoogle() {
@@ -22,8 +25,8 @@ watch(user, () => {
 
 <template>
   <div>
-    <button @click="signInWithGoogle">
+    <UButton @click="signInWithGoogle">
       Google Login
-    </button>
+    </UButton>
   </div>
 </template>
