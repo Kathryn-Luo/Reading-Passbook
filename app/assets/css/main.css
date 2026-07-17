@@ -87,9 +87,9 @@
    字體 / 尺度 / 圓角 / 陰影
    ══════════════════════════════════════════════ */
 @theme static {
-  /* 字型（⚠️ 需另裝 @nuxt/fonts 才會實際下載字型） */
-  --font-serif: 'Noto Serif TC', serif;
-  --font-sans:  'Noto Sans TC', sans-serif;
+  /* 字型 */
+  --font-sans:  'Noto Sans TC', ui-sans-serif, system-ui, -apple-system, 'PingFang TC', 'Microsoft JhengHei', sans-serif;
+  --font-serif: 'Noto Serif TC', ui-serif, Georgia, 'Songti TC', serif;
 
   /* 文字尺度：範圍已挑成單一值，可再微調 */
   --text-title: 38px;
