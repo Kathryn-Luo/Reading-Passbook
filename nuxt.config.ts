@@ -19,6 +19,12 @@ export default defineNuxtConfig({
       autoInit: false,
     },
   },
+  fonts: {
+    families: [
+      { name: 'Noto Serif TC', provider: 'google', weights: [400, 700, 900] },
+      { name: 'Noto Sans TC', provider: 'google', weights: [400, 500, 700] },
+    ],
+  },
   i18n: {
     defaultLocale,
     locales,
