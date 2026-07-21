@@ -32,9 +32,8 @@ export default defineNuxtConfig({
     detectBrowserLanguage: {
       useCookie: true,
       cookieKey: 'i18n_redirected',
-      redirectOn: 'root',
+      redirectOn: 'no prefix',
     },
-    skipSettingLocaleOnNavigate: true,
   },
   supabase: {
     redirectOptions: {

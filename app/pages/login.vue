@@ -1,14 +1,14 @@
 <script lang="ts" setup>
-// 登入頁不進行語系切換
-defineI18nRoute(false)
+useHead({ meta: [{ name: 'robots', content: 'noindex' }] })
 
 const supabase = useSupabaseClient()
+const localePath = useLocalePath()
 
 async function signInWithGoogle() {
   const { error } = await supabase.auth.signInWithOAuth({
     provider: 'google',
     options: {
-      redirectTo: `${window.location.origin}/confirm`,
+      redirectTo: `${window.location.origin}${localePath('/confirm')}`,
     },
   })
   if (error) console.error(error)
