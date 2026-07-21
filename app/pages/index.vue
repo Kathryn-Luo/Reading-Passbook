@@ -6,9 +6,11 @@ watch(user, () => {
 }, { immediate: true })
 
 const supabase = useSupabaseClient()
+const localePath = useLocalePath()
+
 const logout = async () => {
   await supabase.auth.signOut()
-  navigateTo('/login')
+  navigateTo(localePath('/login'))
 }
 </script>
 
@@ -26,7 +28,7 @@ const logout = async () => {
       </button>
     </div>
     <div v-else>
-      <button @click="navigateTo('/login')">
+      <button @click="navigateTo(localePath('/login'))">
         登入
       </button>
     </div>
