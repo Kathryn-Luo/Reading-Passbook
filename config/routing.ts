@@ -1,7 +1,7 @@
 // i18n × Supabase 的路由單一事實來源。
 // 加語言只改 locales; 加公開頁只改 publicPaths,exclude 會自動衍生。
 
-export const defaultLocale = 'zh-TW'
+export const defaultLocale = 'zh_tw'
 export const locales = [
   { code: 'en', language: 'en-US', file: 'en.json', name: 'English' },
   { code: defaultLocale, language: 'zh-TW', file: 'zh-TW.json', name: '繁體中文' },
